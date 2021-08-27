@@ -1,4 +1,4 @@
 # Shark-Game
 
-Hello
+Hey there!
 Shark Game 
