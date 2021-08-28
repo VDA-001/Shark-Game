@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styled from "../stitches.config"
+import { styled } from "../stitches.config"
 
 const Container = styled('div', {
   maxWidth: 1200,

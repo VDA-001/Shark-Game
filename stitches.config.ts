@@ -1,18 +1,16 @@
 import { createCss } from '@stitches/react';
 
-export const { styled, getCssString } = createCss({
+export const { styled, css, global, keyframes, getCssString, theme } = createCss({
   theme: {
-    fonts: {
-      system: 'system-ui',
-    },
     colors: {
-      hiContrast: 'hsl(206,10%,5%)',
-      loContrast: 'white',
+      gray400: 'gainsboro',
+      gray500: 'lightgray',
     },
-    fontSizes: {
-      1: '13px',
-      2: '15px',
-      3: '17px',
-    },
+  },
+  media: {
+    bp1: '(min-width: 480px)',
+  },
+  utils: {
+    marginX: (config) => (value) => ({ marginLeft: value, marginRight: value }),
   },
 });
