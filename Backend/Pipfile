@@ -10,6 +10,8 @@ django = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
 pillow = "*"
+psycopg2-binary = "*"
+django-cockroachdb = "*"
 
 [requires]
 python_version = "3.9"
