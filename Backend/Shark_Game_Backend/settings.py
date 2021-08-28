@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-g+(c96pw=5iwyx$+uu4)mg^#u8m%9-x(3i-!p1gn65*2=vjr_x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'Shark_Game_Backend',
     'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
@@ -77,16 +78,31 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Shark_Game_Backend.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+       'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE' : 'django_cockroachdb',
+#        'USER' : 'vishal',
+#        'PASSWORD': '0FO022W54Vmzpo1W',
+#        'HOST' : 'free-tier6.gcp-asia-southeast1.cockroachlabs.cloud',
+#        'PORT' : 26257,
+#        'NAME' : 'klutzy-fish-1382.bank',
+#        'OPTIONS': {
+#            'sslmode': 'verify-full',
+#            'sslrootcert': '/home/vishal/.postgresql/root.crt',
+#        },
+#    }
+#}
+
 
 
 # Password validation
