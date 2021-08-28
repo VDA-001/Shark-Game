@@ -14,7 +14,7 @@ def register(request):
         return JsonResponse({"error":"Not found username or email field"})
 
     if CustomUser.objects.filter(email=email):
-        return JsonResponse({"error":"Email already exists"})
+        return JsonResponse({"Success":"Email already exists"})
     else:
         instance = CustomUser.objects.create(email=email,name=username)
         instance.save();

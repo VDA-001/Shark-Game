@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-)$b)*!s@&o%^cppmxk08(4po2l5_ely3hs+wjj5+oq6!gbb=7h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://Shark-Game.vda-001.repl.co']
 
 
 # Application definition

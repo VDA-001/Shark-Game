@@ -1,13 +1,71 @@
+import React from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { styled } from "../stitches.config"
+import { useForm } from "react-hook-form";
+import { signup } from "../helper/userHelper.js";
 
 const Container = styled('div', {
   maxWidth: 1200,
-  margin: 'auto'
+  margin: 'auto',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+
+  "form": {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    
+
+    "label": {
+      margin: "12px 6px",
+    },
+
+    "input[type=\"submit\"]": {
+      marginTop: "24px"
+    }
+  },
+
+  "form > div": {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: '500px',
+  }
 })
 
 export default function Home() {
+
+  const router = useRouter()
+
+  const { register, handleSubmit } = useForm();
+
+  // Data from the Input form comes here
+  const onSubmit = data => {
+    var username = data.usernameP1;
+    var email = data.emailP1;
+
+    signup({username,email})
+    .then(response=>{
+      localStorage.setItem('username-1',JSON.stringify(data.usernameP1));
+      localStorage.setItem('email-1',JSON.stringify(data.emailP1));
+    })
+    .catch(error=>console.log(error))
+
+    username = data.usernameP2;
+    email = data.emailP2;
+    
+    signup({username,email})
+    .then(response=>{
+      localStorage.setItem('username-2',JSON.stringify(data.usernameP2));
+      localStorage.setItem('email-2',JSON.stringify(data.emailP2));
+    })
+    .catch(error=>console.log(error))
+    router.push("/Home");
+  };
+  
   return (
     <div>
       <Head>
@@ -17,6 +75,31 @@ export default function Home() {
       </Head>
       <Container>
         <h1>Shark Battle</h1>
+        <div>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div> 
+              <div>
+              <h3>Player 1</h3>
+                  <label>Username <br />
+                    <input placeholder="Enter your username here.." {...register("usernameP1")} /> <br />
+                  </label> <br />
+                  <label>Email <br />
+                    <input placeholder="Enter your email here.." {...register("emailP1")} /> <br />
+                  </label>
+              </div>
+              <div>
+              <h3>Player 2</h3>
+                  <label>Username <br />
+                    <input placeholder="Enter your username here.." {...register("usernameP2")} /> <br />
+                  </label> <br />
+                  <label>Email <br />
+                    <input placeholder="Enter your email here.." {...register("emailP2")} /> <br />
+                  </label>
+               </div>
+            </div>
+            <input type="submit" />
+          </form>
+        </div>
       </Container>
     </div>
   )
